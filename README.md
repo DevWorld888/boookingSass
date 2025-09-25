@@ -1,36 +1,59 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# BookingSaaS
+
+BookingSaaS is a modern, scalable SaaS platform for managing appointments and bookings. Designed for businesses of all sizes, it streamlines scheduling, automates reminders, and provides insightful analytics to help you grow.
+
+## Features
+
+- **Easy Appointment Scheduling:** Intuitive interface for clients and staff.
+- **Automated Reminders:** Reduce no-shows with email/SMS notifications.
+- **Calendar Integration:** Sync with Google Calendar and Outlook.
+- **Customizable Services:** Define services, durations, and staff availability.
+- **Analytics Dashboard:** Track bookings, revenue, and customer trends.
+- **Multi-User Support:** Roles for admins, staff, and clients.
+- **Secure & Reliable:** Built with modern security best practices.
+
+## Tech Stack
+
+- **Frontend:** React.js
+- **Backend:** Node.js, Express.js
+- **Database:** MongoDB
+- **Authentication:** JWT, OAuth
+- **Deployment:** Docker, Azure/AWS
 
 ## Getting Started
 
-First, run the development server:
+1. **Clone the repository:**
+    ```bash
+    git clone https://github.com/yourusername/bookingsass.git
+    cd bookingsass
+    ```
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+2. **Install dependencies:**
+    ```bash
+    npm install
+    ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3. **Configure environment variables:**  
+    Copy `.env.example` to `.env` and update values.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+4. **Run the app:**
+    ```bash
+    npm start
+    ```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Screenshots
 
-## Learn More
+![Dashboard Screenshot](docs/screenshots/dashboard.png)
+![Booking Page](docs/screenshots/booking.png)
 
-To learn more about Next.js, take a look at the following resources:
+## Contributing
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Contributions are welcome! Please open issues or submit pull requests.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## License
 
-## Deploy on Vercel
+This project is licensed under the MIT License.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+**BookingSaaS** — Simplify your bookings, grow your business.
