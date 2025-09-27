@@ -1,4 +1,10 @@
 // scripts/seed.ts
+import { config } from 'dotenv';
+import { resolve } from 'path';
+
+// Load environment variables BEFORE importing anything that uses them
+config({ path: resolve(process.cwd(), '.env.local') });
+
 import { db} from "@/lib/db"; // <- alias @/ apunta a src
 
 import {
@@ -8,8 +14,7 @@ import {
 import { eq } from "drizzle-orm";
 
 async function main() {
-  
-
+  console.log("🌱 Iniciando seed...");
   // 1) Roles (idempotente)
   const defaultRoles = [
     { name: "owner",        description: "Full control" },
@@ -22,18 +27,36 @@ async function main() {
   }
 
   // 2) Organización demo
-  const [{ id: orgId }] = await db
-    .insert(organizations)
-    .values({ name: "Demo Clinic" })
-    .onConflictDoNothing()
-    .returning({ id: organizations.id });
+  let orgId: string;
+  const existingOrg = await db.select().from(organizations).where(eq(organizations.name, "Demo Clinic"));
+  
+  if (existingOrg.length > 0) {
+    orgId = existingOrg[0].id;
+    console.log("Using existing organization:", orgId);
+  } else {
+    const [newOrg] = await db
+      .insert(organizations)
+      .values({ name: "Demo Clinic" })
+      .returning({ id: organizations.id });
+    orgId = newOrg.id;
+    console.log("Created new organization:", orgId);
+  }
 
   // 3) Usuario demo (solo para ambiente local)
-  const [{ id: userId }] = await db
-    .insert(users)
-    .values({ email: "owner@demo.local" })
-    .onConflictDoNothing({ target: users.email })
-    .returning({ id: users.id });
+  let userId: string;
+  const existingUser = await db.select().from(users).where(eq(users.email, "owner@demo.local"));
+  
+  if (existingUser.length > 0) {
+    userId = existingUser[0].id;
+    console.log("Using existing user:", userId);
+  } else {
+    const [newUser] = await db
+      .insert(users)
+      .values({ email: "owner@demo.local" })
+      .returning({ id: users.id });
+    userId = newUser.id;
+    console.log("Created new user:", userId);
+  }
 
   // 4) Owner en la org
   const [ownerRole] = await db.select().from(roles).where(eq(roles.name, "owner"));
@@ -97,10 +120,14 @@ async function main() {
   ]);
 
   console.log("✅ Seed completo. Org:", orgId, "Owner user:", userId);
- 
 }
 
-main().catch((e) => {
-  console.error(e);
-  process.exit(1);
-});
+main()
+  .then(() => {
+    console.log("✅ Seed script completed successfully!");
+    process.exit(0);
+  })
+  .catch((e) => {
+    console.error("❌ Seed script failed:", e);
+    process.exit(1);
+  });
