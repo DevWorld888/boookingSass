@@ -12,9 +12,11 @@
     "dotenv": "^17.2.2",
     "drizzle-orm": "^0.44.5",
     "next": "15.5.4",
+    "next-auth": "^4.24.11",
     "postgres": "^3.4.7",
     "react": "19.1.0",
-    "react-dom": "19.1.0"
+    "react-dom": "19.1.0",
+    "zod": "^4.1.11"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
