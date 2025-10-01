@@ -1,18 +1,40 @@
 "use client";
 import { useState } from "react";
+import { signIn } from "next-auth/react"
+import { useRouter } from "next/navigation"
 
 export default function SignInPage() {
   const [email, setEmail] = useState("owner@demo.local");
+   const [loading, setLoading] = useState(false)
+   const [error, setError] = useState("")
+
+  const router = useRouter()
 
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
-    const res = await fetch("/api/auth/callback/credentials", {
-      method: "POST",
-      headers: { "content-type": "application/x-www-form-urlencoded" },
-      body: new URLSearchParams({ email, csrf: "" }) as any,
-    });
-    // NextAuth v5 redirige con 302 si ok
-    if (res.redirected) window.location.href = "/dashboard";
+    setLoading(true);
+
+
+    try {
+      const result = await signIn("credentials", {
+        email,
+        redirect: false,
+      })
+
+      if (result?.error) {
+        setError("Credenciales inválidas")
+        setLoading(false)
+        return
+      }
+
+      router.push("/dashboard")
+      router.refresh()
+    } catch (error) {
+      setError("Ocurrió un error")
+      setLoading(false)
+    }
+   
+    
   }
 
   return (
@@ -25,8 +47,19 @@ export default function SignInPage() {
           value={email}
           onChange={(e)=>setEmail(e.target.value)}
         />
-        <button className="w-full rounded bg-black text-white py-2">Entrar</button>
+        <button
+          type="submit"
+          disabled={loading}
+          className="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600 disabled:opacity-50"
+        >
+          {loading ? "Cargando..." : "Iniciar Sesión"}
+        </button>
         <p className="text-xs text-slate-500">Para dev usa <b>owner@demo.local</b></p>
+        {error && (
+          <div className="bg-red-100 text-red-700 p-3 rounded">
+            {error}
+          </div>
+        )}
       </form>
     </main>
   );
