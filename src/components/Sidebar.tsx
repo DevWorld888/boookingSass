@@ -86,25 +86,25 @@ const Sidebar = ({ session, orgId }: SidebarProps) => {
   const SidebarContent = () => (
     <>
       {/* User Profile */}
-      <div className="flex items-center gap-3 p-6 border-b border-gray-100">
+      <div className="flex items-center gap-3 p-6 border-b border-gray-700">
         <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white font-semibold text-sm">
           {session?.user?.name?.[0] || 'U'}
         </div>
         <div className="flex-1 min-w-0">
-          <div className="font-medium text-gray-900 text-sm truncate">
+          <div className="font-medium text-white text-sm truncate">
             {session?.user?.name || 'Usuario'}
           </div>
-          <div className="text-xs text-gray-500 truncate">{orgId}</div>
+          <div className="text-xs text-gray-400 truncate">{orgId}</div>
         </div>
         <button 
-          className="p-1 hover:bg-gray-100 rounded lg:hidden"
+          className="p-1 hover:bg-gray-800 rounded lg:hidden"
           onClick={() => setIsMobileMenuOpen(false)}
         >
           <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
           </svg>
         </button>
-        <button className="p-1 hover:bg-gray-100 rounded hidden lg:block">
+        <button className="p-1 hover:bg-gray-800 rounded hidden lg:block">
           <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
           </svg>
@@ -112,7 +112,7 @@ const Sidebar = ({ session, orgId }: SidebarProps) => {
       </div>
 
       {/* Navigation */}
-      <nav className="flex-1 px-4 py-6 space-y-1 overflow-y-auto">
+      <nav className="flex-1 px-4 py-6 space-y-1 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-gray-900">
         {/* Main Navigation */}
         {navigation.map((item) => {
           const isActive = pathname === item.href;
@@ -122,12 +122,12 @@ const Sidebar = ({ session, orgId }: SidebarProps) => {
               href={item.href}
               className={`flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-lg transition-colors ${
                 isActive
-                  ? 'bg-blue-50 text-blue-700 border-r-2 border-blue-700'
-                  : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
+                  ? 'bg-blue-900 text-blue-300 border-r-2 border-blue-300'
+                  : 'text-gray-300 hover:bg-gray-800 hover:text-white'
               }`}
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              <span className={isActive ? 'text-blue-700' : 'text-gray-600'}>
+              <span className={isActive ? 'text-blue-300' : 'text-gray-300'}>
                 {item.icon}
               </span>
               {item.name}
@@ -137,13 +137,13 @@ const Sidebar = ({ session, orgId }: SidebarProps) => {
 
         {/* Recent Activity */}
         <div className="pt-6">
-          <h3 className="px-3 text-xs font-semibold text-gray-900 uppercase tracking-wider mb-3">Today</h3>
+          <h3 className="px-3 text-xs font-semibold text-white uppercase tracking-wider mb-3">Today</h3>
           <div className="space-y-1">
             {recentItems.today.map((item, index) => (
               <Link
                 key={index}
                 href={item.href}
-                className="block px-3 py-2 text-sm text-gray-600 hover:bg-gray-50 hover:text-gray-900 rounded-lg transition-colors truncate"
+                className="block px-3 py-2 text-sm text-gray-300 hover:bg-gray-800 hover:text-white rounded-lg transition-colors truncate"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {item.name}
@@ -153,13 +153,13 @@ const Sidebar = ({ session, orgId }: SidebarProps) => {
         </div>
 
         <div className="pt-4">
-          <h3 className="px-3 text-xs font-semibold text-gray-900 uppercase tracking-wider mb-3">Yesterday</h3>
+          <h3 className="px-3 text-xs font-semibold text-white uppercase tracking-wider mb-3">Yesterday</h3>
           <div className="space-y-1">
             {recentItems.yesterday.map((item, index) => (
               <Link
                 key={index}
                 href={item.href}
-                className="block px-3 py-2 text-sm text-gray-600 hover:bg-gray-50 hover:text-gray-900 rounded-lg transition-colors truncate"
+                className="block px-3 py-2 text-sm text-gray-300 hover:bg-gray-800 hover:text-white rounded-lg transition-colors truncate"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {item.name}
@@ -170,13 +170,13 @@ const Sidebar = ({ session, orgId }: SidebarProps) => {
       </nav>
 
       {/* Upgrade Section */}
-      <div className="p-4 border-t border-gray-100">
-        <div className="bg-gray-50 rounded-lg p-4">
+      <div className="p-4 border-t border-gray-700">
+        <div className="bg-gray-800 rounded-lg p-4">
           <div className="flex items-center gap-2 mb-2">
             <div className="w-2 h-2 bg-yellow-400 rounded-full"></div>
-            <span className="text-sm font-medium text-gray-900">Only 5 AI reports left</span>
+            <span className="text-sm font-medium text-white">Only 5 AI reports left</span>
           </div>
-          <p className="text-xs text-gray-600 mb-3">Get deeper insights with Pro</p>
+          <p className="text-xs text-gray-400 mb-3">Get deeper insights with Pro</p>
           <button className="w-full bg-blue-500 hover:bg-blue-600 text-white text-sm font-medium py-2 px-4 rounded-lg transition-colors">
             Upgrade Now
           </button>
@@ -184,8 +184,8 @@ const Sidebar = ({ session, orgId }: SidebarProps) => {
         
         <div className="flex items-center justify-between mt-4">
           <div className="flex items-center gap-2">
-            <button className="p-1 hover:bg-gray-100 rounded">
-              <svg className="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <button className="p-1 hover:bg-gray-800 rounded">
+              <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
               </svg>
             </button>
@@ -199,17 +199,17 @@ const Sidebar = ({ session, orgId }: SidebarProps) => {
   return (
     <>
       {/* Mobile menu button */}
-      <div className="lg:hidden fixed top-0 left-0 right-0 z-50 bg-white border-b border-gray-200">
+      <div className="lg:hidden fixed top-0 left-0 right-0 z-50 bg-gray-900 border-b border-gray-700">
         <div className="flex items-center justify-between p-4">
           <button
             onClick={() => setIsMobileMenuOpen(true)}
-            className="p-2 rounded-lg bg-gray-100 hover:bg-gray-200 transition-colors"
+            className="p-2 rounded-lg bg-gray-800 hover:bg-gray-700 transition-colors"
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
             </svg>
           </button>
-          <div className="font-semibold text-gray-900">BookingSaaS</div>
+          <div className="font-semibold text-white">BookingSaaS</div>
           <div className="w-10"></div> {/* Spacer */}
         </div>
       </div>
@@ -217,7 +217,7 @@ const Sidebar = ({ session, orgId }: SidebarProps) => {
       {/* Mobile sidebar overlay */}
       {isMobileMenuOpen && (
         <div className="lg:hidden fixed inset-0 z-50 bg-gray-900 bg-opacity-50" onClick={() => setIsMobileMenuOpen(false)}>
-          <div className="fixed left-0 top-0 h-full w-80 bg-white shadow-xl" onClick={(e) => e.stopPropagation()}>
+          <div className="fixed left-0 top-0 h-full w-80 bg-gray-900 shadow-xl" onClick={(e) => e.stopPropagation()}>
             <div className="flex flex-col h-full">
               <SidebarContent />
             </div>
@@ -226,7 +226,7 @@ const Sidebar = ({ session, orgId }: SidebarProps) => {
       )}
 
       {/* Desktop Sidebar */}
-      <aside className="hidden lg:flex flex-col w-72 bg-white h-screen border-r border-gray-200 fixed left-0 top-0">
+      <aside className="hidden lg:flex flex-col w-72 bg-gray-900 h-screen border-r border-gray-700 fixed left-0 top-0">
         <SidebarContent />
       </aside>
     </>
