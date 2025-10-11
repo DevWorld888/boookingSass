@@ -20,7 +20,7 @@ export default async function ServicesPage() {
       <Breadcrumb items={breadcrumbItems} />
       
       {/* Header Section */}
-      <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+      <div className="bg-[#111827] rounded-xl shadow-sm border border-gray-200 p-6">
         <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
           {/* Title and Description */}
           <div className="flex-1">
@@ -28,9 +28,9 @@ export default async function ServicesPage() {
               <div className="p-2 bg-blue-100 rounded-lg">
                 <ChartBarIcon className="h-6 w-6 text-blue-600" />
               </div>
-              <h1 className="text-2xl font-bold text-gray-900">Gestión de Servicios</h1>
+              <h1 className="text-2xl font-bold text-gray-900 text-white">Gestión de Servicios</h1>
             </div>
-            <p className="text-gray-600">
+            <p className="text-white">
               Administra todos tus servicios disponibles, precios y configuraciones.
             </p>
           </div>
@@ -40,31 +40,30 @@ export default async function ServicesPage() {
             <button className="inline-flex items-center px-4 py-2 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:ring-2 focus:ring-blue-500 transition-colors duration-200">
               <Cog6ToothIcon className="h-4 w-4 mr-2" />
               Configuración
-            </button>
-            
+            </button>            
             <NewServiceDialog orgId={orgId} />
           </div>
         </div>
         
         {/* Stats Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
-          <div className="bg-gradient-to-r from-blue-50 to-blue-100 rounded-lg p-4">
+          <div className="bg-[#0F172A] rounded-lg p-4">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-blue-600 text-sm font-medium">Total Servicios</p>
-                <p className="text-2xl font-bold text-blue-900">12</p>
+                <p className="text-white text-sm font-medium">Total Servicios</p>
+                <p className="text-2xl font-bold text-white">12</p>
               </div>
               <div className="p-2 bg-blue-200 rounded-lg">
                 <ChartBarIcon className="h-6 w-6 text-blue-600" />
               </div>
             </div>
           </div>
-          
-          <div className="bg-gradient-to-r from-green-50 to-green-100 rounded-lg p-4">
+
+          <div className="bg-[#0F172A] rounded-lg p-4">
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-green-600 text-sm font-medium">Servicios Activos</p>
-                <p className="text-2xl font-bold text-green-900">8</p>
+                <p className="text-2xl font-bold text-white">8</p>
               </div>
               <div className="p-2 bg-green-200 rounded-lg">
                 <ChartBarIcon className="h-6 w-6 text-green-600" />
@@ -72,11 +71,11 @@ export default async function ServicesPage() {
             </div>
           </div>
           
-          <div className="bg-gradient-to-r from-purple-50 to-purple-100 rounded-lg p-4">
+          <div className="bg-[#0F172A] rounded-lg p-4">
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-purple-600 text-sm font-medium">Precio Promedio</p>
-                <p className="text-2xl font-bold text-purple-900">$85.50</p>
+                <p className="text-2xl font-bold text-white">$85.50</p>
               </div>
               <div className="p-2 bg-purple-200 rounded-lg">
                 <ChartBarIcon className="h-6 w-6 text-purple-600" />

@@ -226,7 +226,7 @@ const Sidebar = ({ session, orgId }: SidebarProps) => {
       )}
 
       {/* Desktop Sidebar */}
-      <aside className="hidden lg:flex flex-col w-72 bg-gray-900 h-screen border-r border-gray-700 fixed left-0 top-0">
+      <aside className="hidden lg:flex flex-col w-72 bg-gray-900 h-screen  fixed left-0 top-0">
         <SidebarContent />
       </aside>
     </>
