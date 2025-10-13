@@ -137,14 +137,14 @@ export default function ServicesTable({ orgId }: { orgId: string }) {
   }
 
   return (
-    <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+    <div className="bg-[#0F172A] rounded-xl  border border-gray-200 overflow-hidden">
       {/* Header con búsqueda y filtros */}
-      <div className="p-6 border-b border-gray-200 bg-gray-50/50">
+      <div className="p-6 border-b border-gray-200 ">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <div className="flex items-center gap-4">
-            <h2 className="text-lg font-semibold text-gray-900">Lista de Servicios</h2>
+            <h2 className="text-lg font-semibold text-white-900">Lista de Servicios</h2>
             {selectedRows.length > 0 && (
-              <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+              <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-[#1C2438] text-white-800">
                 {selectedRows.length} seleccionado{selectedRows.length !== 1 ? 's' : ''}
               </span>
             )}
@@ -152,7 +152,7 @@ export default function ServicesTable({ orgId }: { orgId: string }) {
           
           <div className="flex items-center gap-3">
             <div className="relative">
-              <MagnifyingGlassIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
+              <MagnifyingGlassIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-white-400" />
               <input
                 type="text"
                 placeholder="Buscar servicios..."
@@ -170,10 +170,10 @@ export default function ServicesTable({ orgId }: { orgId: string }) {
                   : 'border-gray-300 text-gray-700 hover:bg-gray-50'
               }`}
             >
-              <FunnelIcon className="h-4 w-4 mr-2" />
+              <FunnelIcon className="h-4 w-4 mr-2 text-white-400" />
               Filtros
               {activeFilters && (
-                <span className="ml-2 inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                <span className="ml-2 inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-white-800">
                   Activos
                 </span>
               )}

@@ -23,7 +23,7 @@ export default function Breadcrumb({ items }: BreadcrumbProps) {
             {item.href && index < items.length - 1 ? (
               <Link
                 href={item.href}
-                className="text-sm font-medium text-gray-500 hover:text-blue-600 transition-colors duration-200"
+                className="text-sm font-medium text-white hover:text-gray-300 transition-colors duration-200"
               >
                 {item.label}
               </Link>
@@ -31,8 +31,8 @@ export default function Breadcrumb({ items }: BreadcrumbProps) {
               <span
                 className={`text-sm font-medium ${
                   index === items.length - 1
-                    ? 'text-gray-900'
-                    : 'text-gray-500'
+                    ? 'text-white-900'
+                    : 'text-white-500'
                 }`}
               >
                 {item.label}
