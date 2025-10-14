@@ -47,39 +47,107 @@ export default async function ServicesPage() {
         
         {/* Stats Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
-          <div className="bg-[#0F172A] rounded-lg p-4 border border-gray-700">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-white text-sm font-medium">Total Servicios</p>
-                <p className="text-2xl font-bold text-white">12</p>
+          {/* Card 1 - Total Servicios */}
+          <div className="bg-[#1a2332] rounded-xl p-6 border border-gray-700/50 hover:border-gray-600/50 transition-all">
+            {/* Header con ícono y menú */}
+            <div className="flex items-start justify-between mb-6">
+              <div className="w-12 h-12 rounded-full bg-gray-800/50 flex items-center justify-center">
+                <RectangleGroupIcon className="h-6 w-6 text-gray-400" />
               </div>
-              <div className="p-2 bg-[#151E34] rounded-lg">
-                <RectangleGroupIcon className="h-6 w-6 text-white" />
-                
+              <button className="text-gray-400 hover:text-white">
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z" />
+                </svg>
+              </button>
+            </div>
+
+            {/* Título principal */}
+            <div className="mb-2">
+              <h3 className="text-3xl font-bold text-white">8/12</h3>
+            </div>
+
+            {/* Subtítulo */}
+            <p className="text-sm text-gray-400 mb-6">Total Servicios</p>
+
+            {/* Barra de progreso y detalles */}
+            <div className="space-y-2">
+              <div className="flex items-center justify-between text-sm">
+                <span className="text-gray-400">Servicios Activos</span>
+                <span className="text-white font-medium">8 <span className="text-blue-400">(67%)</span></span>
+              </div>
+              {/* Barra de progreso */}
+              <div className="w-full bg-gray-700/50 rounded-full h-2 overflow-hidden">
+                <div className="bg-blue-500 h-full rounded-full transition-all" style={{ width: '67%' }}></div>
               </div>
             </div>
           </div>
 
-          <div className="bg-[#0F172A] rounded-lg p-4 border border-gray-700">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-white text-sm font-medium">Servicios Activos</p>
-                <p className="text-2xl font-bold text-white">8</p>
+          {/* Card 2 - Servicios Activos */}
+          <div className="bg-[#1a2332] rounded-xl p-6 border border-gray-700/50 hover:border-gray-600/50 transition-all">
+            {/* Header con ícono y menú */}
+            <div className="flex items-start justify-between mb-6">
+              <div className="w-12 h-12 rounded-full bg-gray-800/50 flex items-center justify-center">
+                <ArrowUpOnSquareIcon className="h-6 w-6 text-gray-400" />
               </div>
-              <div className="p-2 bg-[#151E34] rounded-lg">
-                <ArrowUpOnSquareIcon className="h-6 w-6 text-white" />
+              <button className="text-gray-400 hover:text-white">
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z" />
+                </svg>
+              </button>
+            </div>
+
+            {/* Título principal */}
+            <div className="mb-2">
+              <h3 className="text-3xl font-bold text-white">52/86</h3>
+            </div>
+
+            {/* Subtítulo */}
+            <p className="text-sm text-gray-400 mb-6">Servicios Activos</p>
+
+            {/* Barra de progreso y detalles */}
+            <div className="space-y-2">
+              <div className="flex items-center justify-between text-sm">
+                <span className="text-gray-400">Servicios Activos</span>
+                <span className="text-white font-medium">52 Completados <span className="text-orange-400">(63%)</span></span>
+              </div>
+              {/* Barra de progreso */}
+              <div className="w-full bg-gray-700/50 rounded-full h-2 overflow-hidden">
+                <div className="bg-orange-500 h-full rounded-full transition-all" style={{ width: '63%' }}></div>
               </div>
             </div>
           </div>
           
-          <div className="bg-[#0F172A] rounded-lg p-4 border border-gray-700">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-white text-sm font-medium">Precio Promedio</p>
-                <p className="text-2xl font-bold text-white">$85.50</p>
+          {/* Card 3 - Precio Promedio */}
+          <div className="bg-[#1a2332] rounded-xl p-6 border border-gray-700/50 hover:border-gray-600/50 transition-all">
+            {/* Header con ícono y menú */}
+            <div className="flex items-start justify-between mb-6">
+              <div className="w-12 h-12 rounded-full bg-gray-800/50 flex items-center justify-center">
+                <ChartBarIcon className="h-6 w-6 text-gray-400" />
               </div>
-              <div className="p-2 bg-[#151E34] rounded-lg">
-                <ChartBarIcon className="h-6 w-6 text-white" />
+              <button className="text-gray-400 hover:text-white">
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z" />
+                </svg>
+              </button>
+            </div>
+
+            {/* Título principal */}
+            <div className="mb-2">
+              <h3 className="text-3xl font-bold text-white">16/20</h3>
+            </div>
+
+            {/* Subtítulo */}
+            <p className="text-sm text-gray-400 mb-6">Precio Promedio</p>
+
+            {/* Barra de progreso y detalles */}
+            <div className="space-y-2">
+              <div className="flex items-center justify-between text-sm">
+                <span className="text-gray-400">Proyectos En...</span>
+                <span className="text-white font-medium">16 Completados <span className="text-green-400">(78%)</span></span>
+              </div>
+              {/* Barra de progreso */}
+              <div className="w-full bg-gray-700/50 rounded-full h-2 overflow-hidden">
+                <div className="bg-green-500 h-full rounded-full transition-all" style={{ width: '78%' }}></div>
               </div>
             </div>
           </div>

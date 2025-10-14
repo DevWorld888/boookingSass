@@ -137,14 +137,14 @@ export default function ServicesTable({ orgId }: { orgId: string }) {
   }
 
   return (
-    <div className="bg-[#0F172A] rounded-xl  border border-gray-200 overflow-hidden">
+    <div className="bg-[#1a2332] rounded-xl overflow-hidden">
       {/* Header con búsqueda y filtros */}
-      <div className="p-6 border-b border-gray-200 ">
+      <div className="p-6 border-b border-gray-700/50">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <div className="flex items-center gap-4">
-            <h2 className="text-lg font-semibold text-white-900">Lista de Servicios</h2>
+            <h2 className="text-lg font-semibold text-white">Lista de Servicios</h2>
             {selectedRows.length > 0 && (
-              <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-[#1C2438] text-white-800">
+              <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-gray-700/50 text-white">
                 {selectedRows.length} seleccionado{selectedRows.length !== 1 ? 's' : ''}
               </span>
             )}
@@ -152,13 +152,13 @@ export default function ServicesTable({ orgId }: { orgId: string }) {
           
           <div className="flex items-center gap-3">
             <div className="relative">
-              <MagnifyingGlassIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-white-400" />
+              <MagnifyingGlassIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
               <input
                 type="text"
                 placeholder="Buscar servicios..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="pl-10 pr-4 py-2 w-64 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="pl-10 pr-4 py-2 w-64 bg-gray-800/50 border border-gray-700 text-white placeholder-gray-400 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               />
             </div>
             
@@ -166,20 +166,20 @@ export default function ServicesTable({ orgId }: { orgId: string }) {
               onClick={() => setFiltersModalOpen(true)}
               className={`inline-flex items-center px-3 py-2 border rounded-lg text-sm font-medium focus:ring-2 focus:ring-blue-500 transition-colors duration-200 ${
                 activeFilters 
-                  ? 'border-blue-300 bg-blue-50 text-blue-700 hover:bg-blue-100' 
-                  : 'border-gray-300 text-gray-700 hover:bg-gray-50'
+                  ? 'border-blue-500 bg-blue-500/20 text-blue-400 hover:bg-blue-500/30' 
+                  : 'border-gray-700 text-gray-300 hover:bg-gray-800/50'
               }`}
             >
-              <FunnelIcon className="h-4 w-4 mr-2 text-white-400" />
+              <FunnelIcon className="h-4 w-4 mr-2" />
               Filtros
               {activeFilters && (
-                <span className="ml-2 inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-white-800">
+                <span className="ml-2 inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-blue-500/30 text-blue-300">
                   Activos
                 </span>
               )}
             </button>
             
-            <button className="inline-flex items-center px-3 py-2 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 focus:ring-2 focus:ring-blue-500">
+            <button className="inline-flex items-center px-3 py-2 border border-gray-700 rounded-lg text-sm font-medium text-gray-300 hover:bg-gray-800/50 focus:ring-2 focus:ring-blue-500">
               <AdjustmentsHorizontalIcon className="h-4 w-4 mr-2" />
               Vista
             </button>
@@ -189,21 +189,21 @@ export default function ServicesTable({ orgId }: { orgId: string }) {
 
       {/* Tabla */}
       <div className="overflow-x-auto">
-        <table className="min-w-full divide-y divide-gray-200">
-          <thead className="bg-gray-50">
-            <tr>
-              <th scope="col" className="relative w-12 px-6 py-3">
+        <table className="min-w-full">
+          <thead>
+            <tr className="border-b border-gray-700/50">
+              <th scope="col" className="relative w-12 px-6 py-4">
                 <input
                   type="checkbox"
                   checked={selectedRows.length === filteredRows.length && filteredRows.length > 0}
                   onChange={handleSelectAll}
-                  className="absolute left-4 top-1/2 -mt-2 h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                  className="absolute left-4 top-1/2 -mt-2 h-4 w-4 rounded border-gray-600 bg-gray-700 text-blue-500 focus:ring-blue-500"
                 />
               </th>
               
               <th 
                 scope="col" 
-                className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100"
+                className="px-6 py-4 text-left text-xs font-semibold text-gray-400 uppercase tracking-wider cursor-pointer hover:bg-gray-800/30"
                 onClick={() => handleSort('name')}
               >
                 <div className="flex items-center gap-1">
@@ -214,7 +214,7 @@ export default function ServicesTable({ orgId }: { orgId: string }) {
               
               <th 
                 scope="col" 
-                className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100"
+                className="px-6 py-4 text-left text-xs font-semibold text-gray-400 uppercase tracking-wider cursor-pointer hover:bg-gray-800/30"
                 onClick={() => handleSort('durationMinutes')}
               >
                 <div className="flex items-center gap-1">
@@ -225,7 +225,7 @@ export default function ServicesTable({ orgId }: { orgId: string }) {
               
               <th 
                 scope="col" 
-                className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100"
+                className="px-6 py-4 text-left text-xs font-semibold text-gray-400 uppercase tracking-wider cursor-pointer hover:bg-gray-800/30"
                 onClick={() => handleSort('capacity')}
               >
                 <div className="flex items-center gap-1">
@@ -236,7 +236,7 @@ export default function ServicesTable({ orgId }: { orgId: string }) {
               
               <th 
                 scope="col" 
-                className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100"
+                className="px-6 py-4 text-left text-xs font-semibold text-gray-400 uppercase tracking-wider cursor-pointer hover:bg-gray-800/30"
                 onClick={() => handleSort('priceCents')}
               >
                 <div className="flex items-center gap-1">
@@ -245,22 +245,22 @@ export default function ServicesTable({ orgId }: { orgId: string }) {
                 </div>
               </th>
               
-              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th scope="col" className="px-6 py-4 text-left text-xs font-semibold text-gray-400 uppercase tracking-wider">
                 Estado
               </th>
               
-              <th scope="col" className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th scope="col" className="px-6 py-4 text-right text-xs font-semibold text-gray-400 uppercase tracking-wider">
                 Acciones
               </th>
             </tr>
           </thead>
           
-          <tbody className="bg-white divide-y divide-gray-200">
+          <tbody>
             {filteredRows.map((service, index) => (
               <tr 
                 key={service.id} 
-                className={`hover:bg-gray-50 transition-colors duration-150 ${
-                  selectedRows.includes(service.id) ? 'bg-blue-50' : ''
+                className={`border-b border-gray-700/30 hover:bg-gray-800/30 transition-colors duration-150 ${
+                  selectedRows.includes(service.id) ? 'bg-blue-900/20' : ''
                 }`}
               >
                 <td className="relative w-12 px-6 py-4">
@@ -268,7 +268,7 @@ export default function ServicesTable({ orgId }: { orgId: string }) {
                     type="checkbox"
                     checked={selectedRows.includes(service.id)}
                     onChange={() => handleRowSelect(service.id)}
-                    className="absolute left-4 top-1/2 -mt-2 h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                    className="absolute left-4 top-1/2 -mt-2 h-4 w-4 rounded border-gray-600 bg-gray-700 text-blue-500 focus:ring-blue-500"
                   />
                 </td>
                 
@@ -282,36 +282,36 @@ export default function ServicesTable({ orgId }: { orgId: string }) {
                       </div>
                     </div>
                     <div className="ml-4">
-                      <div className="text-sm font-medium text-gray-900">{service.name}</div>
-                      <div className="text-sm text-gray-500">ID: {service.id.slice(0, 8)}...</div>
+                      <div className="text-sm font-medium text-white">{service.name}</div>
+                      <div className="text-sm text-gray-400">ID: {service.id.slice(0, 8)}...</div>
                     </div>
                   </div>
                 </td>
                 
                 <td className="px-6 py-4 whitespace-nowrap">
                   <div className="flex items-center">
-                    <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-800">
+                    <span className="text-white">
                       {service.durationMinutes} min
                     </span>
                   </div>
                 </td>
                 
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-white">
                   <div className="flex items-center">
-                    <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                    <span>
                       {service.capacity} personas
                     </span>
                   </div>
                 </td>
                 
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-white">
                   <span className="font-medium">
                     ${service.priceCents ? (service.priceCents / 100).toFixed(2) : "0.00"}
                   </span>
                 </td>
                 
                 <td className="px-6 py-4 whitespace-nowrap">
-                  <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                  <span className="text-green-400 font-medium">
                     Activo
                   </span>
                 </td>
@@ -320,7 +320,7 @@ export default function ServicesTable({ orgId }: { orgId: string }) {
                   <div className="flex items-center justify-end gap-2">
                     <button
                       onClick={() => handleEdit(service)}
-                      className="inline-flex items-center p-2 text-gray-400 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors duration-150"
+                      className="inline-flex items-center p-2 text-gray-400 hover:text-blue-400 hover:bg-gray-800/50 rounded-lg transition-colors duration-150"
                       title="Editar"
                     >
                       <PencilIcon className="h-4 w-4" />
@@ -328,7 +328,7 @@ export default function ServicesTable({ orgId }: { orgId: string }) {
                     
                     <button
                       onClick={() => handleDelete(service)}
-                      className="inline-flex items-center p-2 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors duration-150"
+                      className="inline-flex items-center p-2 text-gray-400 hover:text-red-400 hover:bg-gray-800/50 rounded-lg transition-colors duration-150"
                       title="Eliminar"
                     >
                       <TrashIcon className="h-4 w-4" />
@@ -342,19 +342,19 @@ export default function ServicesTable({ orgId }: { orgId: string }) {
       </div>
 
       {/* Footer con información de paginación */}
-      <div className="px-6 py-4 bg-gray-50 border-t border-gray-200">
+      <div className="px-6 py-4 bg-[#1a2332] border-t border-gray-700/50">
         <div className="flex items-center justify-between">
-          <div className="text-sm text-gray-700">
-            Mostrando <span className="font-medium">{filteredRows.length}</span> de{' '}
-            <span className="font-medium">{rows.length}</span> servicios
+          <div className="text-sm text-gray-400">
+            Mostrando <span className="font-medium text-white">{filteredRows.length}</span> de{' '}
+            <span className="font-medium text-white">{rows.length}</span> servicios
           </div>
           
           <div className="flex items-center gap-2">
-            <button className="px-3 py-1 text-sm border border-gray-300 rounded-md hover:bg-gray-50 disabled:opacity-50">
+            <button className="px-3 py-1 text-sm border border-gray-700 text-gray-300 rounded-md hover:bg-gray-800/50 disabled:opacity-50">
               Anterior
             </button>
-            <span className="px-3 py-1 text-sm bg-blue-600 text-white rounded-md">1</span>
-            <button className="px-3 py-1 text-sm border border-gray-300 rounded-md hover:bg-gray-50 disabled:opacity-50">
+            <span className="px-3 py-1 text-sm bg-blue-500 text-white rounded-md">1</span>
+            <button className="px-3 py-1 text-sm border border-gray-700 text-gray-300 rounded-md hover:bg-gray-800/50 disabled:opacity-50">
               Siguiente
             </button>
           </div>
