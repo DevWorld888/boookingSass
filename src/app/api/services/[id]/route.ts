@@ -7,13 +7,14 @@ import { serviceSchema } from "@/lib/validations";
 // PATCH /api/services/:id
 export async function PATCH(req: NextRequest, { params }: { params: { id: string } }) {
   const id = params.id;
+  const orgId = req.nextUrl.searchParams.get("orgId")!;
   const body = await req.json();
   const parsed = serviceSchema.partial().extend({ orgId: serviceSchema.shape.orgId }).safeParse(body);
   if (!parsed.success) return NextResponse.json({ error: parsed.error.flatten() }, { status: 400 });
 
   const [row] = await db.update(services)
     .set(parsed.data as any)
-    .where(and(eq(services.id, id), eq(services.orgId, parsed.data.orgId)))
+    .where(and(eq(services.id, id), eq(services.orgId, orgId)))
     .returning();
   return NextResponse.json({ service: row });
 }

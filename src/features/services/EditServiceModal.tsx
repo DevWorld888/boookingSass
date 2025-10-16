@@ -15,9 +15,10 @@ interface EditServiceModalProps {
   isOpen: boolean;
   onClose: () => void;
   onSave: (service: Service) => void;
+  orgId: string;
 }
 
-export default function EditServiceModal({ service, isOpen, onClose, onSave }: EditServiceModalProps) {
+export default function EditServiceModal({ service, isOpen, onClose, onSave, orgId }: EditServiceModalProps) {
   const [loading, setLoading] = useState(false);
   const [form, setForm] = useState({
     name: service?.name || "",
@@ -45,8 +46,8 @@ export default function EditServiceModal({ service, isOpen, onClose, onSave }: E
     setLoading(true);
     
     try {
-      const res = await fetch(`/api/services/${service.id}`, {
-        method: "PUT",
+      const res = await fetch(`/api/services/${service.id}?orgId=${orgId}`, {
+        method: "PATCH",
         headers: { "content-type": "application/json" },
         body: JSON.stringify(form),
       });

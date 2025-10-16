@@ -370,6 +370,7 @@ export default function ServicesTable({ orgId }: { orgId: string }) {
           setSelectedService(null);
         }}
         onSave={handleSaveEdit}
+        orgId={orgId}
       />
 
       <DeleteConfirmationModal
@@ -381,6 +382,7 @@ export default function ServicesTable({ orgId }: { orgId: string }) {
           setSelectedService(null);
         }}
         onConfirm={handleConfirmDelete}
+        orgId={orgId}
       />
 
       <FiltersModal

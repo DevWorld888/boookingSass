@@ -8,6 +8,7 @@ interface DeleteConfirmationModalProps {
   isOpen: boolean;
   onClose: () => void;
   onConfirm: (id: string) => void;
+  orgId: string;
 }
 
 export default function DeleteConfirmationModal({ 
@@ -15,7 +16,8 @@ export default function DeleteConfirmationModal({
   serviceId, 
   isOpen, 
   onClose, 
-  onConfirm 
+  onConfirm,
+  orgId
 }: DeleteConfirmationModalProps) {
   const [loading, setLoading] = useState(false);
 
@@ -24,8 +26,9 @@ export default function DeleteConfirmationModal({
     
     setLoading(true);
     
+
     try {
-      const res = await fetch(`/api/services/${serviceId}`, {
+      const res = await fetch(`/api/services/${serviceId}?orgId=${orgId}`, {
         method: "DELETE",
       });
       
